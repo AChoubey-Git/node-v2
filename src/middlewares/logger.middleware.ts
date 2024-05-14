@@ -10,15 +10,17 @@ export class LoggerMiddleware implements NestMiddleware {
     res.on('finish', () => {
       const { statusCode } = res;
       const endTime = performance.now();
-      const finalTime = endTime - startTime;
-      if (statusCode === 201)
+      const finalTime = (endTime - startTime).toFixed(2);
+      if (statusCode === 201) {
         this.logger.log(
           `${method} ${originalUrl} ${statusCode} ${finalTime} ms`,
         );
-      if (statusCode === 400)
+      }
+      if (statusCode === 400) {
         this.logger.error(
-          `${method} ${originalUrl} ${statusCode} ${finalTime.toFixed(2)} ms`,
+          `${method} ${originalUrl} ${statusCode} ${finalTime} ms`,
         );
+      }
     });
     next();
   }
