@@ -6,12 +6,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "build": "node init && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start": "node init && nest start",
+    "start:dev": "node init && nest start --watch",
+    "start:debug": "node init && nest start --debug --watch",
+    "start:prod": "node init && node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test:basic": "pnpm test:e2e test/simpleCalc.e2e-spec.ts test/operatorPrecedenceNotHandled.e2e-spec.ts test/invalidExpression.e2e-spec.ts",
     "test:advanced": "pnpm test:e2e test/simpleCalc.e2e-spec.ts test/operatorPrecedenceHandled.e2e-spec.ts test/invalidExpression.e2e-spec.ts",
@@ -19,7 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "dev:mongo": "ts-node ./devMongo.ts"
+    "dev:mongo": "node init && ts-node ./devMongo.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.4.3",
